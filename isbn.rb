@@ -25,5 +25,10 @@ def isbn10(numbers)
 end
 
 def isbn13(numbers)
-  
+  ary = Array.new
+  numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a
+  numbers.each do |v|
+    ary.push(v)
+  end
+  p ary
 end
