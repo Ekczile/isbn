@@ -11,7 +11,7 @@ class Testing < Minitest::Test
     #     assert_equal(Array, isbn10("0-330-28498-3").class)
     # end
 
-    def test_valids
+    def test_isbn10_valids
         assert_equal("Valid", isbn10("0-330-28498-3"))
         assert_equal("Valid", isbn10("0-321-14653-0"))
         assert_equal("Valid", isbn10("2-226-05257-7"))
@@ -23,7 +23,7 @@ class Testing < Minitest::Test
         assert_equal("Valid", isbn10("877195869x"))
     end
 
-    def test_invalid
+    def test_isbn10_invalid
         assert_equal("Invalid", isbn10("978 0 471 48648 0"))
         assert_equal("Invalid", isbn10("0-321@14653-0"))
         assert_equal("Invalid", isbn10("877195x869"))
@@ -33,4 +33,10 @@ class Testing < Minitest::Test
         assert_equal("Invalid", isbn10("1-9054551-1723423"))
         assert_equal("Invalid", isbn10("6094-01-1248-8"))
     end
+
+    def test_isbn13_valids
+        assert_equal(Array, isbn10("0-330-28498-3").class)
+    end
+
+
 end

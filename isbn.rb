@@ -23,3 +23,7 @@ def isbn10(numbers)
       p "Invalid"
     end
 end
+
+def isbn13(numbers)
+  
+end
