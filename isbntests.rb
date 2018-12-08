@@ -30,5 +30,7 @@ class Testing < Minitest::Test
         assert_equal("Invalid", isbn10("8185990451"))
         assert_equal("Invalid", isbn10("89-953630-3-4"))
         assert_equal("Invalid", isbn10("1-9054551-17"))
+        assert_equal("Invalid", isbn10("1-9054551-1723423"))
+        assert_equal("Invalid", isbn10("6094-01-1248-8"))
     end
 end
