@@ -8,6 +8,6 @@ class Testing < Minitest::Test
     end
     
     def test_2
-        assert_equal(Array, isbn10(0-330-28498-3).class)
+        assert_equal(Array, isbn10("0-330-28498-3").class)
     end
 end
