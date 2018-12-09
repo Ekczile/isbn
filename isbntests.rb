@@ -38,12 +38,19 @@ class Testing < Minitest::Test
         assert_equal("Valid", isbn13("978-0-13-149505-0"))
         assert_equal("Valid", isbn13("978 0 471 48648 0"))
         assert_equal("Valid", isbn13("978-0-9858751-3-8"))
+        assert_equal("Valid", isbn13("9781603093255"))
+        assert_equal("Valid", isbn13("978-1-60309-439-9"))
+        assert_equal("Valid", isbn13("978-1-60309-406-1"))
+        assert_equal("Valid", isbn13("978-1-60309-456-6"))
+        assert_equal("Valid", isbn13("978-1-891830-02-0"))
+        
     end
 
     def test_isbn13_invalid
         assert_equal("Invalid", isbn13("321-6-13-169305-6"))
         assert_equal("Invalid", isbn13("443 6 13 344305-x"))
         assert_equal("Invalid", isbn13("321-2-17-345425-6"))
+        assert_equal("Invalid", isbn13("1232173444259"))
     end
 
 end
