@@ -3,7 +3,7 @@ def isbn10(numbers)
     final = Array.new #new array
     checknumber = Array.new #new array
     ary = Array.new #new array
-    numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
+    numbers = numbers.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
     if numbers.length > 10 #conditional if numbers length is greater than 10 to return invalid
       p "Invalid"
     end
@@ -29,7 +29,7 @@ def isbn13(numbers)
   ary = Array.new
   checknumber = Array.new
   final = Array.new
-  numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a
+  numbers = numbers.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").each_char.to_a
   if numbers.length > 13 #conditional if numbers length is greater than 13 to return invalid
     p "Invalid"
   end
