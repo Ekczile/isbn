@@ -3,10 +3,10 @@ def isbn10(numbers)
     final = Array.new #new array
     checknumber = Array.new #new array
     ary = Array.new #new array
-    if numbers.length > 10 #conditional if numbers is greater than to return invalid
+    numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
+    if numbers.length > 10 #conditional if numbers length is greater than 10 to return invalid
       p "Invalid"
     end
-    numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
     numbers.each do |v| #loop 
       ary.push(v.gsub("x", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
     end
@@ -25,10 +25,34 @@ def isbn10(numbers)
 end
 
 def isbn13(numbers)
+  counter = 1
   ary = Array.new
+  checknumber = Array.new
+  final = Array.new
   numbers = numbers.gsub("-", "").gsub(" ", "").each_char.to_a
-  numbers.each do |v|
-    ary.push(v)
+  if numbers.length > 13 #conditional if numbers length is greater than 13 to return invalid
+    p "Invalid"
   end
-  p ary
+  numbers.each do |v| #loop
+    ary.push(v.gsub("x", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
+  end
+  checknumber.push(ary[12]) #storing last number to check later
+  ary.delete_at(12) #array with 13th digit removed
+  ary.each do |v| #loop
+    if counter.odd?
+      final << v * 1
+      counter += 1
+    else
+      final << v * 3
+      counter += 1 
+    end
+  end
+  final = final.sum % 10 #sum of array mod 10
+  final = 10 - final #10 - result of final sum mod 10
+  final = final % 10 #final mod 10 agian
+  if final == checknumber[0] # conditional for if final is equal to the stored digit
+    p "Valid"
+  else
+    p "Invalid"
+  end
 end

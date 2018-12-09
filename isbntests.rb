@@ -35,7 +35,7 @@ class Testing < Minitest::Test
     # end
 
     def test_isbn13_valids
-        assert_equal(Array, isbn13("978-0-13-149505-0").class)
+        assert_equal("Valid", isbn13("978-0-13-149505-0"))
         
     end
 
