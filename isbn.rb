@@ -8,7 +8,7 @@ def isbn10(numbers)
       p "Invalid"
     end
     numbers.each do |v| #loop 
-      ary.push(v.gsub("x", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
+      ary.push(v.gsub("x", "10").gsub("X", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
     end
     checknumber.push(ary[9]) #storing last number to check later
     ary.delete_at(9) # array with 10th digit removed
