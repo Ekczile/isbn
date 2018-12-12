@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="css/style.css">
 
 <center>
-<header>Please enter your ISBN below</header><br>
+<header>Welcome to my ISBN validator!</header><br>
 <br>
 <body>
+Please enter your ISBN below
 <form method = 'post' action = '/home'>
 <%if tencheck == "yes"%>
 Isbn10: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z0-9\s]{3,}" min="10"  maxlength="27" name="isbn10" required>
@@ -16,6 +17,9 @@ Isbn13: <input type="text" placeholder="example 978-0-13-149505-0" pattern="[-a-
 <input type="submit" value="Submit"><br>
 <br>
 <input type="button" value="Reset" onclick="window.location.href='/'"/>
+<input type="hidden" name="ten" value="<%=tencheck%>">
+<input type="hidden" name="thirteen" value="<%=threecheck%>">
+
 </form>
 </body>
 </center>
