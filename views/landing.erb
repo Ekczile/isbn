@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="css/style.css">
+
+<center>
+<header>Welcome to my ISBN validator!</header>
+<br>
+<body>
+Would you like to check:<br>
+<br>
+<form id="myForm" method = 'post' action = '/landing'>
+ISBN10?<input class="mycheck" type="checkbox" name="ten" value="yes"><br>
+<br>
+ISBN13?<input class="mycheck" type="checkbox" name="thirteen" value="yes"><br>
+<br>
+<button type="button" onclick="valthis()">Submit</button>
+</form>
+</body>
+</center>
+
+
+<script>
+function valthis() {
+var checkBoxes = document.getElementsByClassName('mycheck');
+var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if ( checkBoxes[i].checked ) {
+            isChecked = true;
+        };
+    };
+    if ( isChecked ) {
+        document.getElementById("myForm").submit();
+    } else {
+        alert( 'Please, check at least one checkbox!' );
+    }   
+}
+</script>

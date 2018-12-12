@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="css/style.css">
+
+<center>
+<header>Please enter your ISBN below</header><br>
+<br>
+<body>
+<form method = 'post' action = '/home'>
+<%if tencheck == "yes"%>
+Isbn10: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z0-9\s]{3,}" min="10"  maxlength="27" name="isbn10" required>
+<br><br>
+<%end%>
+<%if threecheck == "yes"%>
+Isbn13: <input type="text" placeholder="example 978-0-13-149505-0" pattern="[-a-zA-Z0-9\s]{3,}" min="13"  maxlength="27" name="isbn13" required><br>
+<br>
+<%end%>
+<input type="submit" value="Submit"><br>
+<br>
+<input type="button" value="Reset" onclick="window.location.href='/'"/>
+</form>
+</body>
+</center>

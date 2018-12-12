@@ -4,8 +4,9 @@ def isbn10(numbers)
     checknumber = Array.new #new array
     ary = Array.new #new array
     numbers = numbers.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
+    p numbers.length
     if numbers.length > 10 #conditional if numbers length is greater than 10 to return invalid
-      p "Invalid"
+      return "Invalid"
     end
     numbers.each do |v| #loop 
       ary.push(v.gsub("x", "10").gsub("X", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
@@ -18,9 +19,9 @@ def isbn10(numbers)
     end
     final = final.sum % 11 #sum of all indexs modul 11
     if final == checknumber[0] # conditional for if final is equal to the stored digit
-      p "Valid"
+      return "Valid"
     else
-      p "Invalid"
+      return "Invalid"
     end
 end
 
@@ -31,7 +32,7 @@ def isbn13(numbers)
   final = Array.new
   numbers = numbers.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").each_char.to_a
   if numbers.length > 13 #conditional if numbers length is greater than 13 to return invalid
-    p "Invalid"
+    return "Invalid"
   end
   numbers.each do |v| #loop
     ary.push(v.gsub("x", "10").to_i) #pushing each char into new array as an integer and if v is x convert x to 10
@@ -51,8 +52,8 @@ def isbn13(numbers)
   final = 10 - final #10 - result of final sum mod 10
   final = final % 10 #final mod 10 agian
   if final == checknumber[0] # conditional for if final is equal to the stored digit
-    p "Valid"
+    return "Valid"
   else
-    p "Invalid"
+    return "Invalid"
   end
 end
