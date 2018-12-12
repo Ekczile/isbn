@@ -1,3 +1,6 @@
+require 'csv'
+
+
 def isbn10(numbers)
     counter = 1 #counter
     final = Array.new #new array
@@ -57,3 +60,26 @@ def isbn13(numbers)
     return "Invalid"
   end
 end
+
+def makefile(file)
+counter = 0
+isbnarray = Array.new
+isbn = CSV.read(file, "r")
+isbn.each do |row|
+  newrow = row.to_s.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").gsub("\""," ").gsub("\]", "").gsub("\[", "")
+    if row.length == 10
+      isbnarray.push([isbn10(newrow), row.join(',')])
+    else
+      isbnarray.push([isbn13(newrow), row.join(',')])
+    end
+  end
+  isbnarray = isbnarray
+  CSV.open("isbnverified.csv", "wb") do |csv|
+    isbnarray.each do |v|
+     csv << v
+    end
+  end
+end
+
+makefile("isbn.csv")
+ 

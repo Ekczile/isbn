@@ -1,5 +1,6 @@
 require 'sinatra'
 require_relative 'isbn.rb'
+require 'csv'
 
 
 get '/' do
