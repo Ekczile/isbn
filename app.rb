@@ -36,5 +36,5 @@ get "/validation" do
     isbn10 = isbn10(avalidation)
     isbn13 = isbn13(bvalidation)
     p "this is params in val #{params}"
-    erb :validation, locals: {isbn10: isbn10, isbn13: isbn13, tencheck: tencheck, threecheck: threecheck}
+    erb :validation, locals: {isbn10: isbn10, isbn13: isbn13, tencheck: tencheck, threecheck: threecheck, avalidation: avalidation, bvalidation: bvalidation}
 end

@@ -1,0 +1,30 @@
+.box {
+    background-color: rgba(128, 128, 128, 0.712);
+    width: 20%;
+    border-radius: 10px;
+    
+}
+
+
+body {
+    font-size: 18px;
+    background: url("/pictures/background.jpg") no-repeat center center fixed;
+    
+}
+
+header {
+    font-size: 40px;
+    text-shadow: 5px 5px black;
+    color: rgb(255, 255, 255);
+    background-image: url("/pictures/header.jpg");
+    border-radius: 10px;
+    background-size: fill;
+    background-repeat: no-repeat; 
+    padding: 8vh;
+    background-position: center;
+}
+
+button{
+ background: transparent;
+ border-radius: 10px;
+}

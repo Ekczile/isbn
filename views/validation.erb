@@ -1,18 +1,22 @@
 <link rel="stylesheet" href="css/style.css">
 <center>
-<header>Welcome to my ISBN validator!<header><br>
-
+<header>Welcome to my ISBN validator!</header>
+<br>
+<div class="box">
 <body>
 Results:<br>
 <br>
 <%if tencheck == "yes"%>
-the isbn10 you have entered is <%=isbn10%><br>
+<%=avalidation%> is a <%=isbn10%> isbn10<br>
 <br>
 <%end%>
 <%if threecheck == "yes"%>
-the isbn13 you have entered is <%=isbn13%><br>
+<%=bvalidation%> is a <%=isbn13%> isbn13<br>
 <br>
 <%end%>
-<input type="button" value="Reset" onclick="window.location.href='/'"/>
+<button type="button" onclick="window.location.href='/'">Reset</button>
+<br>
+<br>
 </body>
+</div>
 </center>
