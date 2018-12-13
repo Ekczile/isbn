@@ -62,7 +62,6 @@ def isbn13(numbers)
 end
 
 def makefile(file)
-counter = 0
 isbnarray = Array.new
 isbn = CSV.read(file, "r")
 isbn.each do |row|
@@ -80,6 +79,4 @@ isbn.each do |row|
     end
   end
 end
-
-makefile("isbn.csv")
  
