@@ -16,7 +16,7 @@ Results:<br>
 <%end%>
 <%if csvfile == "yes"%>
 <%validated.each do |v|%>
-<%=v.join(',')%>
+<%=v.join(',').gsub(",", " is ")%>
 <br>
 <%end%>
 <%end%>
