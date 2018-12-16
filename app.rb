@@ -10,14 +10,15 @@ end
 post '/landing' do
     params[:thirteen] ? threecheck = params[:thirteen] : threecheck = ""
     params[:ten] ? tencheck = params[:ten] : tencheck = ""
-    redirect 'home?ten=' + tencheck + '&thirteen=' + threecheck
+    params[:csvfile] ? csvcheck = params[:csvfile] : csvcheck = ""
+    redirect 'home?ten=' + tencheck + '&thirteen=' + threecheck + '&csvfile=' + csvcheck
 end
 
 get '/home' do
     tencheck = params[:ten]
     threecheck = params[:thirteen]
-    p "this is params in home #{params}"
-    erb :home, locals: {tencheck: tencheck, threecheck: threecheck}
+    csvcheck = params[:csvfile]
+    erb :home, locals: {tencheck: tencheck, threecheck: threecheck, csvcheck: csvcheck}
 end
 
 post '/home' do
@@ -25,8 +26,9 @@ post '/home' do
     threecheck = params[:thirteen]
     params[:isbn10] ? avalidation = params[:isbn10] : avalidation = ""
     params[:isbn13] ? bvalidation = params[:isbn13] : bvalidation = ""
-    p "this is params in home post #{params}"
-    redirect 'validation?isbn10=' + avalidation + "&isbn13=" + bvalidation + "&ten=" + tencheck + "&thirteen=" + threecheck
+    csvfile = params[:csvfile]
+    csvval = params[:myFile]
+    redirect 'validation?isbn10=' + avalidation + "&isbn13=" + bvalidation + "&ten=" + tencheck + "&thirteen=" + threecheck + '&csvfile=' + csvfile + '&myFile=' + csvval
 end
 
 get "/validation" do
@@ -36,6 +38,8 @@ get "/validation" do
     bvalidation = params[:isbn13]
     isbn10 = isbn10(avalidation)
     isbn13 = isbn13(bvalidation)
-    p "this is params in val #{params}"
-    erb :validation, locals: {isbn10: isbn10, isbn13: isbn13, tencheck: tencheck, threecheck: threecheck, avalidation: avalidation, bvalidation: bvalidation}
+    csvfile = params[:csvfile]
+    csvval = params[:myFile]
+    validated = makefile(csvval)
+    erb :validation, locals: {isbn10: isbn10, isbn13: isbn13, tencheck: tencheck, threecheck: threecheck, avalidation: avalidation, bvalidation: bvalidation, csvfile: csvfile, csvval: csvval, validated: validated}
 end

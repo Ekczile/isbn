@@ -67,9 +67,9 @@ isbn = CSV.read(file, "r")
 isbn.each do |row|
   newrow = row.to_s.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").gsub("\""," ").gsub("\]", "").gsub("\[", "")
     if row.length == 10
-      isbnarray.push([isbn10(newrow), row.join(',')])
+      isbnarray.push([row.join(','), isbn10(newrow)])
     else
-      isbnarray.push([isbn13(newrow), row.join(',')])
+      isbnarray.push([row.join(','), isbn13(newrow)])
     end
   end
   isbnarray = isbnarray

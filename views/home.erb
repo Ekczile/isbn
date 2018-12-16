@@ -16,11 +16,15 @@ Isbn10: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z
 Isbn13: <input type="text" placeholder="example 978-0-13-149505-0" pattern="[-a-zA-Z0-9\s]{3,}" min="13"  maxlength="27" name="isbn13" required><br>
 <br>
 <%end%>
+<%if csvcheck == "yes"%>
+Select a CSV file: <input type="file" name="myFile"><br><br>
+<%end%>
 <button type="submit">Submit</button>
 <button type="button" onclick="window.location.href='/'"/>Reset</button>
 <br><br>
 <input type="hidden" name="ten" value="<%=tencheck%>">
 <input type="hidden" name="thirteen" value="<%=threecheck%>">
+<input type="hidden" name="csvfile" value="<%=csvcheck%>">
 </form>
 </div>
 </body>

@@ -14,6 +14,13 @@ Results:<br>
 <%=bvalidation%> is a <%=isbn13%> isbn13<br>
 <br>
 <%end%>
+<%if csvfile == "yes"%>
+<%validated.each do |v|%>
+<%=v.join(',')%>
+<br>
+<%end%>
+<%end%>
+<br>
 <button type="button" onclick="window.location.href='/'">Reset</button>
 <br>
 <br>
