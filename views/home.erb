@@ -7,7 +7,7 @@
 <div class="box">
 Please enter your ISBN below<br>
 <br>
-<form method = 'post' action = '/home'>
+<form id="myForm" method = 'post' action = '/home'>
 <%if tencheck == "yes"%>
 Isbn10: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z0-9\s]{3,}" min="10"  maxlength="27" name="isbn10" required>
 <br><br>
@@ -17,9 +17,9 @@ Isbn13: <input type="text" placeholder="example 978-0-13-149505-0" pattern="[-a-
 <br>
 <%end%>
 <%if csvcheck == "yes"%>
-Select a CSV file: <input type="file" name="myFile"><br><br>
+Select a CSV file: <input type="file" id="myFile" name="myFile" accept=".csv"><br><br>
 <%end%>
-<button type="submit">Submit</button>
+<button type="button" onclick="triggerValidation()" >Submit</button>
 <button type="button" onclick="window.location.href='/'"/>Reset</button>
 <br><br>
 <input type="hidden" name="ten" value="<%=tencheck%>">
@@ -29,3 +29,16 @@ Select a CSV file: <input type="file" name="myFile"><br><br>
 </div>
 </body>
 </center>
+
+<script>
+function triggerValidation() {
+    var el = document.getElementById("myFile")
+    console.log(el.files[0].name.substr(-3, 3));
+
+    if (el.files[0].name.substr(-3, 3) != "csv") {
+        alert('Please use csv files');
+    } else {
+        document.getElementById("myForm").submit();
+  }
+}
+</script>
