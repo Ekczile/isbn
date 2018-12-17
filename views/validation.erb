@@ -6,12 +6,8 @@
 <body>
 Results:<br>
 <br>
-<%if tencheck == "yes"%>
-<%=avalidation%> is a <%=isbn10%> isbn10<br>
-<br>
-<%end%>
-<%if threecheck == "yes"%>
-<%=bvalidation%> is a <%=isbn13%> isbn13<br>
+<%if isbncheck == "yes"%>
+<%=avalidation%><br>
 <br>
 <%end%>
 <%if csvfile == "yes"%>

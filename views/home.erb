@@ -8,13 +8,9 @@
 Please enter your ISBN below<br>
 <br>
 <form id="myForm" method = 'post' action = '/home'>
-<%if tencheck == "yes"%>
-Isbn10: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z0-9\s]{3,}" min="10"  maxlength="27" name="isbn10" required>
+<%if isbncheck == "yes"%>
+ISBN: <input type="text" placeholder="example 0-330-28498-3" pattern="[-a-zA-Z0-9\s]{3,}" min="10"  maxlength="27" name="isbn" required>
 <br><br>
-<%end%>
-<%if threecheck == "yes"%>
-Isbn13: <input type="text" placeholder="example 978-0-13-149505-0" pattern="[-a-zA-Z0-9\s]{3,}" min="13"  maxlength="27" name="isbn13" required><br>
-<br>
 <%end%>
 <%if csvcheck == "yes"%>
 Select a CSV file: <input type="file" id="myFile" name="myFile" accept=".csv"><br><br>
@@ -22,8 +18,7 @@ Select a CSV file: <input type="file" id="myFile" name="myFile" accept=".csv"><b
 <button>Submit</button>
 <button type="button" onclick="window.location.href='/'"/>Reset</button>
 <br><br>
-<input type="hidden" name="ten" value="<%=tencheck%>">
-<input type="hidden" name="thirteen" value="<%=threecheck%>">
+<input type="hidden" name="threeten" value="<%=isbncheck%>">
 <input type="hidden" name="csvfile" value="<%=csvcheck%>">
 </form>
 </div>
