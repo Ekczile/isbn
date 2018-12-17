@@ -24,22 +24,26 @@ end
 post '/home' do
     tencheck = params[:ten]
     threecheck = params[:thirteen]
+    csvfile = params[:csvfile]
     params[:isbn10] ? avalidation = params[:isbn10] : avalidation = ""
     params[:isbn13] ? bvalidation = params[:isbn13] : bvalidation = ""
-    csvfile = params[:csvfile]
-    csvval = params[:myFile]
+    params[:myFile] ? csvval = params[:myFile] : csvval = ""
     redirect 'validation?isbn10=' + avalidation + "&isbn13=" + bvalidation + "&ten=" + tencheck + "&thirteen=" + threecheck + '&csvfile=' + csvfile + '&myFile=' + csvval
 end
 
 get "/validation" do
     tencheck = params[:ten]
     threecheck = params[:thirteen]
+    csvfile = params[:csvfile]
     avalidation = params[:isbn10]
     bvalidation = params[:isbn13]
+    csvval = params[:myFile]
     isbn10 = isbn10(avalidation)
     isbn13 = isbn13(bvalidation)
-    csvfile = params[:csvfile]
-    csvval = params[:myFile]
-    validated = makefile(csvval)
+    if csvval != ""
+        validated = makefile(csvval)
+    else
+        validated = ""
+    end
     erb :validation, locals: {isbn10: isbn10, isbn13: isbn13, tencheck: tencheck, threecheck: threecheck, avalidation: avalidation, bvalidation: bvalidation, csvfile: csvfile, csvval: csvval, validated: validated}
 end
