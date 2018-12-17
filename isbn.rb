@@ -7,7 +7,6 @@ def isbn10(numbers)
     checknumber = Array.new #new array
     ary = Array.new #new array
     numbers = numbers.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").each_char.to_a #removing - and white spaces
-    p numbers.length
     if numbers.length > 10 #conditional if numbers length is greater than 10 to return invalid
       return "Invalid"
     end
@@ -65,14 +64,13 @@ def makefile(file)
 isbnarray = Array.new
 isbn = CSV.read(file, "r")
 isbn.each do |row|
-  newrow = row.to_s.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").gsub("\""," ").gsub("\]", "").gsub("\[", "")
+  newrow = row[1].to_s.tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "").gsub("\""," ").gsub("\]", "").gsub("\[", "")
     if row.length == 10
       isbnarray.push([row[1], isbn10(newrow)])
     else
       isbnarray.push([row[1], isbn13(newrow)])
     end
   end
-  isbnarray = isbnarray
   CSV.open("isbnverified.csv", "wb") do |csv|
     isbnarray.each do |v|
      csv << v

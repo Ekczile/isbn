@@ -30,15 +30,16 @@ end
 
 get "/validation" do
     isbncheck = params[:threeten]
-    csvfile = params[:csvfile]
-    avalidation = params[:isbn].tr("a-w", "").tr("y-z", "").gsub("-", "").gsub(" ", "")
+    
+    avalidation = params[:isbn]
     if avalidation.length == 10
         avalidation = avalidation + " is " + isbn10(avalidation)
     else
         avalidation = avalidation + " is " + isbn13(avalidation)
     end
     csvval = params[:myFile]
-    if csvval != ""
+    csvfile = params[:csvfile]
+    if csvfile != ""
         validated = makefile(csvval)
     else
         validated = ""
