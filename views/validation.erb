@@ -11,8 +11,8 @@ Results:<br>
 <br>
 <%end%>
 <%if csvfile == "yes"%>
-<%validated.each do |v|%>
-<%=v.join(',').gsub(",", " is ")%>
+<%tested.each do |v|%>
+<%=v.to_s.gsub("\""," ").gsub("\]", "").gsub("\[", "") + "\n"%>
 <br>
 <%end%>
 <%end%>

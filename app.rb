@@ -1,6 +1,8 @@
 require 'sinatra'
-require_relative 'isbn.rb'
 require 'csv'
+require 'aws-sdk-s3' 
+require_relative 'isbn.rb'
+require_relative 'bucketfunct.rb'
 
 
 get '/' do
@@ -30,7 +32,6 @@ end
 
 get "/validation" do
     isbncheck = params[:threeten]
-    
     avalidation = params[:isbn]
     if avalidation.length == 10
         avalidation = avalidation + " is " + isbn10(avalidation)
@@ -40,9 +41,10 @@ get "/validation" do
     csvval = params[:myFile]
     csvfile = params[:csvfile]
     if csvfile != ""
-        validated = makefile(csvval)
+        tester = writebucket(csvval)
     else
         validated = ""
     end
-    erb :validation, locals: {isbncheck: isbncheck, avalidation: avalidation, csvfile: csvfile, csvval: csvval, validated: validated}
+    tested = readbucket()
+    erb :validation, locals: {isbncheck: isbncheck, avalidation: avalidation, csvfile: csvfile, csvval: csvval, validated: validated, tested: tested}
 end
