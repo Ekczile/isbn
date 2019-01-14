@@ -7,7 +7,7 @@
 Results:<br>
 <br>
 <%if isbncheck == "yes"%>
-<%=avalidation%><br>
+<%=tested.to_s.gsub("\""," ").gsub("\]", "").gsub("\[", "")%><br>
 <br>
 <%end%>
 <%if csvfile == "yes"%>

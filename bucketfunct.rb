@@ -31,6 +31,14 @@ CSV.open(response.body, "wb") do |csv|
     csv << row
         end
     end
-    obj = s3.bucket(ENV['S3_BUCKET']).object(ENV['S3_File'])
-    obj.upload_file(file)
+obj = s3.bucket(ENV['S3_BUCKET']).object(ENV['S3_File'])
+obj.upload_file(file)
+end
+
+def writebucket2(string)
+bucketreg = 'us-east-1'
+bucket = ENV['S3_BUCKET']
+s3 = Aws::S3::Resource.new(region: bucketreg, access_key_id: ENV['S3_KEY'], secret_access_key: ENV['S3_SECRET'])
+obj = s3.bucket(ENV['S3_BUCKET']).object(ENV['S3_File'])
+obj.put(body: "1," + string)
 end

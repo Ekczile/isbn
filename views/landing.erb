@@ -21,18 +21,19 @@ Check a CSV file?<input class="mycheck" type="checkbox" name="csvfile" value="ye
 
 
 <script>
+var checkBoxes = document.getElementsByClassName('mycheck');
 function valthis() {
 var checkBoxes = document.getElementsByClassName('mycheck');
-var isChecked = false;
-    for (var i = 0; i < checkBoxes.length; i++) {
-        if ( checkBoxes[i].checked ) {
-            isChecked = true;
+var isChecked = true;
+var notCheck = !checkBoxes[0].checked && !checkBoxes[1].checked
+var isCheck = checkBoxes[0].checked && checkBoxes[1].checked
+        if ((notCheck)||(isCheck)) {
+            isChecked = false;
         };
-    };
     if ( isChecked ) {
         document.getElementById("myForm").submit();
     } else {
-        alert( 'Please, check at least one checkbox!' );
-    }   
+        alert( 'Please, check only one checkbox!' );
+    }
 }
 </script>

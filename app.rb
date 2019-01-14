@@ -34,8 +34,11 @@ get "/validation" do
     isbncheck = params[:threeten]
     avalidation = params[:isbn]
     if avalidation.length == 10
+        writebucket2(avalidation)
         avalidation = avalidation + " is " + isbn10(avalidation)
+        
     else
+        writebucket2(avalidation)
         avalidation = avalidation + " is " + isbn13(avalidation)
     end
     csvval = params[:myFile]
